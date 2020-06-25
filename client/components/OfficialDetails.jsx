@@ -158,6 +158,7 @@ const OfficialDetails = (props) => {
 
   if (channels) {
     channels.forEach((el,index) => {
+      
       outlets.push(
         <li key={`${el.type}${index}`}>
           <ExternalAnchor href={`http://${el.type}.com/${el.id}`} target="_blank">
