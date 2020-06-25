@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import Contest from './Contest.jsx';
+import colors from '../components/style/colors';
 import { access } from '../util';
 
 const Election = (props) => {
-  console.log('election data', props);
-
   const contests = props.contests || [];
   const election = props.election || props;
   const address = access(election).pollingLocations[0].address({});
   const { electionDay } = election;
 
   const children = contests.length ? (
-    contests.map((data, i) => <Contest {...data} key={`contest${i}`} state={address.state} />)
+    contests.map((data, i) => (
+      <Contest {...data} key={`contest${i}`} state={address.state} />
+    ))
   ) : (
     <div className="NoContest">No available contest information.</div>
   );
@@ -36,7 +37,7 @@ const Election = (props) => {
     font-weight: bold;
     font-size: 1.4em;
     padding-bottom: 0.25em;
-    color: #e0162b;
+    color: ${colors.red};
   `;
 
   const Address = styled(Date)`
